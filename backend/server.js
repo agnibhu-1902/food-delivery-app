@@ -11,7 +11,7 @@ import promoCodeRouter from './routes/promoCodeRoute.js'
 // app config
 const app = express()
 const port = 4000
-const frontend_url = "http://localhost:5173"
+const frontend_url = "http://localhost"
 
 // middleware
 app.use(express.json())
@@ -28,6 +28,10 @@ app.use('/api/cart', cartRouter)
 app.use('/api/order', orderRouter)
 app.use('/api/promocode', promoCodeRouter)
 app.use('/images', express.static('uploads'))
+
+app.get('/', (req, res) => {
+    res.send('App working!')
+})
 
 app.post("/verify", (req, res) => {
     const orderId = req.query.orderId
