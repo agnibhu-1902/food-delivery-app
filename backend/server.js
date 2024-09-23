@@ -29,8 +29,8 @@ app.use('/api/order', orderRouter)
 app.use('/api/promocode', promoCodeRouter)
 app.use('/images', express.static('uploads'))
 
-app.get('/', (req, res) => {
-    res.send('App working!')
+app.get('/health', (req, res) => {
+    res.status(200).json({message: 'App is healthy'})
 })
 
 app.post("/verify", (req, res) => {
